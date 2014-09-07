@@ -16,7 +16,7 @@ Bundler.require(*Rails.groups)
 module SampleApp
   class Application < Rails::Application
     config.secret_key_base = '647af22a23e49f435ed4a4e61c39d479f66387fbba7f09ceee59d97aca5df8be733defb646219442b05493609579aa280a0cbd466e105a95acd5b77ad47bdc03'
-    
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -28,5 +28,6 @@ module SampleApp
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+    config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
   end
 end
