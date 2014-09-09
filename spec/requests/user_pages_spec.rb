@@ -15,13 +15,20 @@ describe "UserPages" do
     before { visit signup_path }
     let(:submit) { "Create my account" }
 
-    context "with invalid data" do
+    context "with invalid information" do
       it "should not create a user" do
         expect{ click_button submit }.not_to change(User, :count)
       end
+
+      context "after submission" do
+        before { click_button submit }
+
+        it { should have_content('error') }
+        # it { should have_title('Sign up') }
+      end
     end
 
-    context "with valid data" do
+    context "with valid information" do
       before do
         fill_in "Name", with: "Example User"
         fill_in "Email", with: "example@user.com"
